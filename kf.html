@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>한식 - 민's키친</title>
+    <link rel="icon" type="image/png" href="./img/restaurant.png" />
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+
+      #header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      #header h2 {
+        color: #4a00e0; /* 색상을 조금 더 진한 보라색으로 변경 */
+      }
+
+      hr {
+        width: 100%;
+        height: 5px;
+        border: none;
+        background-color: black;
+        margin-bottom: 20px;
+      }
+
+      .korean-food-container {
+        max-width: 1000px;
+        margin: 30px auto;
+        padding: 20px;
+      }
+
+      .korean-food-title {
+        text-align: center;
+        color: #4a00e0; /* 헤더와 일관성 맞춤 */
+        margin-bottom: 20px;
+      }
+
+      .korean-food-table-container {
+        overflow-y: auto;
+        max-height: 500px;
+      }
+
+      .korean-food-table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 2px solid #4a00e0;
+      }
+
+      .korean-food-table th,
+      .korean-food-table td {
+        border: 1px solid #ddd;
+        padding: 15px; /* 패딩을 늘려 여백 확보 */
+        text-align: center;
+      }
+
+      .korean-food-table th {
+        background-color: #f8f8f8;
+        color: #333;
+        position: sticky;
+        top: 0;
+      }
+
+      .korean-food-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      .korean-food-table tr:hover {
+        background-color: #e8e8e8;
+      }
+
+      .korean-food-table img {
+        width: 150px; /* 사진 크기 증가 */
+        height: 150px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+
+      .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .back-link a {
+        color: #4a00e0; /* 더 진한 색상 적용 */
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      .back-link a:hover {
+        background-color: #4a00e0;
+        color: #fff; /* 흰색으로 유지하되 대비 강화 */
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+
+      /* 후기 배너 스타일 */
+      .reviews-container {
+        max-width: 1000px;
+        margin: 30px auto;
+      }
+
+      .reviews-title {
+        text-align: center;
+        color: #4a00e0; /* 통일성 위해 색상 변경 */
+        margin-bottom: 20px;
+      }
+
+      .reviews-wrapper {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        padding-bottom: 20px;
+      }
+
+      .review {
+        min-width: 300px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        border: 2px solid #4a00e0;
+      }
+
+      .review:hover {
+        transform: translateY(-5px);
+      }
+
+      .review-image {
+        width: 100%;
+        height: 150px;
+        background-color: #f3f0ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #4a00e0;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .review-content {
+        padding: 15px;
+        background-color: white;
+      }
+
+      .review-title {
+        color: #4a00e0;
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+
+      .review-desc {
+        color: #555;
+        margin-bottom: 15px;
+      }
+
+      .review-author {
+        color: #999;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <img src="./img/foodhat.png" width="50" height="50" alt="Food Hat" />
+      <h2>민's키친</h2>
+    </div>
+    <hr />
+
+    <div class="korean-food-container">
+      <h1 class="korean-food-title">한식 추천 맛집</h1>
+      <div class="korean-food-table-container">
+        <table class="korean-food-table">
+          <thead>
+            <tr>
+              <th>사진</th>
+              <th>식당 이름</th>
+              <th>추천도</th>
+              <th>위치</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="./img/korean1.jpg" alt="식당1 사진" /></td>
+              <td>김밥천국</td>
+              <td>★★★★☆ (4/5)</td>
+              <td>수원시 팔달구 인계동</td>
+            </tr>
+            <tr>
+              <td><img src="./img/korean2.jpg" alt="식당2 사진" /></td>
+              <td>한옥집</td>
+              <td>★★★★★ (5/5)</td>
+              <td>서울시 강남구 역삼동</td>
+            </tr>
+            <tr>
+              <td><img src="./img/korean3.jpg" alt="식당3 사진" /></td>
+              <td>설렁탕집</td>
+              <td>★★★☆☆ (3/5)</td>
+              <td>경기도 용인시 수지구</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 손님 후기 배너 섹션 -->
+    <div class="reviews-container">
+      <h2 class="reviews-title">손님 후기</h2>
+      <div class="reviews-wrapper">
+        <!-- 후기 1 -->
+        <div class="review">
+          <div class="review-image">김밥천국 후기</div>
+          <div class="review-content">
+            <h3 class="review-title">가성비 최고!</h3>
+            <p class="review-desc">
+              김밥이 정말 맛있고 가격도 저렴해요. 자주 방문할 것 같아요.
+            </p>
+            <p class="review-author">- 박민수</p>
+          </div>
+        </div>
+
+        <!-- 후기 2 -->
+        <div class="review">
+          <div class="review-image">한옥집 후기</div>
+          <div class="review-content">
+            <h3 class="review-title">분위기 좋음</h3>
+            <p class="review-desc">
+              한식 특유의 정갈한 맛과 멋진 인테리어가 인상적이었어요.
+            </p>
+            <p class="review-author">- 김지영</p>
+          </div>
+        </div>
+
+        <!-- 후기 3 -->
+        <div class="review">
+          <div class="review-image">설렁탕집 후기</div>
+          <div class="review-content">
+            <h3 class="review-title">따뜻한 한 끼</h3>
+            <p class="review-desc">
+              설렁탕 국물이 깊고 따뜻해서 힐링되는 느낌이었어요.
+            </p>
+            <p class="review-author">- 이수진</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="back-link">
+      <a href="main.html">메인 페이지로 돌아가기</a>
+    </div>
+  </body>
+</html>

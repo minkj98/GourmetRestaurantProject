@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>중식 - 민's키친</title>
+    <link rel="icon" type="image/png" href="./img/restaurant.png" />
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+
+      #header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      #header h2 {
+        color: #4a00e0;
+      }
+
+      hr {
+        width: 100%;
+        height: 5px;
+        border: none;
+        background-color: black;
+        margin-bottom: 20px;
+      }
+
+      .chinese-food-container {
+        max-width: 1000px;
+        margin: 30px auto;
+        padding: 20px;
+      }
+
+      .chinese-food-title {
+        text-align: center;
+        color: #4a00e0;
+        margin-bottom: 20px;
+      }
+
+      .chinese-food-table-container {
+        overflow-y: auto;
+        max-height: 500px;
+      }
+
+      .chinese-food-table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 2px solid #4a00e0;
+      }
+      
+
+      .chinese-food-table th,
+      .chinese-food-table td {
+        border: 1px solid #ddd;
+        padding: 15px;
+        text-align: center;
+      }
+
+      .chinese-food-table th {
+        background-color: #f8f8f8;
+        color: #333;
+        position: sticky;
+        top: 0;
+      }
+
+      .chinese-food-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      .chinese-food-table tr:hover {
+        background-color: #e8e8e8;
+      }
+
+      .chinese-food-table img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+
+      .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .back-link a {
+        color: #4a00e0;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      .back-link a:hover {
+        background-color: #4a00e0;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+
+      /* 후기 배너 스타일 */
+      .reviews-container {
+        max-width: 1000px;
+        margin: 30px auto;
+      }
+
+      .reviews-title {
+        text-align: center;
+        color: #4a00e0;
+        margin-bottom: 20px;
+      }
+
+      .reviews-wrapper {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        padding-bottom: 20px;
+      }
+
+      .review {
+        min-width: 300px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        border: 2px solid #4a00e0;
+      }
+
+      .review:hover {
+        transform: translateY(-5px);
+      }
+
+      .review-image {
+        width: 100%;
+        height: 150px;
+        background-color: #f3f0ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #4a00e0;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .review-content {
+        padding: 15px;
+        background-color: white;
+      }
+
+      .review-title {
+        color: #4a00e0;
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+
+      .review-desc {
+        color: #555;
+        margin-bottom: 15px;
+      }
+
+      .review-author {
+        color: #999;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 나머지 HTML 내용은 그대로 유지 -->
+    <div id="header">
+      <img src="./img/foodhat.png" width="50" height="50" alt="Food Hat" />
+      <h2>민's키친</h2>
+    </div>
+    <hr />
+
+    <div class="chinese-food-container">
+      <h1 class="chinese-food-title">중식 추천 맛집</h1>
+      <div class="chinese-food-table-container">
+        <table class="chinese-food-table">
+          <thead>
+            <tr>
+              <th>사진</th>
+              <th>식당 이름</th>
+              <th>추천도</th>
+              <th>위치</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="./img/chinese1.jpg" alt="식당1 사진" /></td>
+              <td>홍콩반점</td>
+              <td>★★★★☆ (4/5)</td>
+              <td>수원시 권선구 세류동</td>
+            </tr>
+            <tr>
+              <td><img src="./img/chinese2.jpg" alt="식당2 사진" /></td>
+              <td>만리장성</td>
+              <td>★★★★★ (5/5)</td>
+              <td>서울시 중구 명동</td>
+            </tr>
+            <tr>
+              <td><img src="./img/chinese3.jpg" alt="식당3 사진" /></td>
+              <td>짜장면집</td>
+              <td>★★★☆☆ (3/5)</td>
+              <td>경기도 고양시 일산동구</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="reviews-container">
+      <h2 class="reviews-title">손님 후기</h2>
+      <div class="reviews-wrapper">
+        <div class="review">
+          <div class="review-image">홍콩반점 후기</div>
+          <div class="review-content">
+            <h3 class="review-title">빠른 배달!</h3>
+            <p class="review-desc">
+              짜장면 배달이 빨라서 점심시간에 딱 좋았어요.
+            </p>
+            <p class="review-author">- 이정민</p>
+          </div>
+        </div>
+        <div class="review">
+          <div class="review-image">만리장성 후기</div>
+          <div class="review-content">
+            <h3 class="review-title">고급스러운 맛</h3>
+            <p class="review-desc">
+              탕수육이 바삭하고 소스가 정말 맛있었어요.
+            </p>
+            <p class="review-author">- 최지훈</p>
+          </div>
+        </div>
+        <div class="review">
+          <div class="review-image">짜장면집 후기</div>
+          <div class="review-content">
+            <h3 class="review-title">가성비 굿</h3>
+            <p class="review-desc">
+              저렴한 가격에 든든한 한 끼를 먹을 수 있었어요.
+            </p>
+            <p class="review-author">- 김수연</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="back-link">
+      <a href="main.html">메인 페이지로 돌아가기</a>
+    </div>
+  </body>
+</html>
