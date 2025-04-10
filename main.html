@@ -142,10 +142,6 @@
         font-weight: bold;
       }
 
-      .menu:hover {
-        transform: translateY(-5px);
-      }
-
       .board-container {
         flex-grow: 1;
         height: 300px;
@@ -232,10 +228,6 @@
         border: 2px solid #6a24fe; /* 윤곽선 추가: 2px 두께, 보라색 */
       }
 
-      .banner:hover {
-        transform: translateY(-5px);
-      }
-
       .banner-image {
         width: 100%;
         height: 150px;
@@ -268,7 +260,7 @@
         display: inline-block;
         background-color: #6a24fe;
         color: white;
-        padding: 8px 15px;
+        padding: 5px 15px;
         border-radius: 5px;
         text-decoration: none;
         font-weight: bold;
@@ -301,20 +293,13 @@
       <form method="post" action="url" id="login-form">
         <h2>로그인</h2>
         <label for="userName">이메일</label>
-        <input
-          type="text"
-          id="userName"
-          name="userName" 
-          placeholder="Email"
-          required
-        />
+        <input type="text" id="userName" name="userName" placeholder="Email" />
         <label for="userPassword">비밀번호</label>
         <input
           type="password"
           id="userPassword"
           name="userPassword"
           placeholder="Password"
-          required
         />
         <label for="remember-check">
           <input type="checkbox" id="remember-check" name="remember" /> 아이디
@@ -322,7 +307,8 @@
         </label>
         <div class="button-container">
           <input type="submit" value="Login" />
-          <input type="submit" value="Signup" />
+
+          <input type="submit" value="Signup" onclick="goToSignup(event)" />
         </div>
       </form>
 
@@ -417,3 +403,9 @@
     </div>
   </body>
 </html>
+<script>
+  function goToSignup(e){
+    e.preventDefault();
+    window.location.href = "signup.html";
+  }
+</script>
