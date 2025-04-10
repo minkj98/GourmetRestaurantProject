@@ -1,122 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" /> <!-- 문자 인코딩 설정 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- 반응형 웹을 위한 뷰포트 설정 -->
-    <title>회원가입</title> <!-- 페이지 제목 -->
-    <link rel="icon" type="image/png" href="./img/restaurant.png" /> <!-- 파비콘 설정 -->
+    <meta charset="UTF-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <title>회원가입</title> 
+    <link rel="icon" type="image/png" href="./img/restaurant.png" /> 
     <style>
-      /* 기본 body 스타일 설정 */
       body {
         font-family: sans-serif;
         font-size: 15px;
-        background-color: #f5f6f7; /* 연한 회색 배경 */
+        background-color: #f5f6f7; 
         line-height: 1.5em;
         color: #222;
         margin: 0;
       }
       
-      /* 회원가입 폼 전체 컨테이너 스타일 */
+      
       .member {
         width: 400px;
-        margin: auto; /* 중앙 정렬 */
+        margin: auto; 
         padding: 0 20px;
         margin-bottom: 20px;
       }
       
-      /* 각 입력 필드 영역 스타일 */
+  
       .member .field {
-        margin: 5px 0;
+        margin: 12px 0;
       }
       
-      /* 라벨 텍스트(b 태그) 스타일 */
+     
       .member b {
         display: block;
-        margin-bottom: 5px;
+        margin-bottom: 8px;
+        font-weight: normal; 
       }
       
-      /* 입력 필드 포커스 시 테두리 스타일 */
-      .member input:focus,
-      .member select:focus {
-        border: 1px solid #6a24fe; /* 보라색 테두리 강조 */
-      }
       
-      /* 라디오 버튼을 제외한 모든 입력 필드와 셀렉트 박스 스타일 */
-      .member input:not(input[type="radio"]),
+      .member input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]),
       .member select {
-        border: 1px solid #dadada;
+        border: 2px solid #6a24fe;  /* 테두리 색상 */
+        border-radius: 10px; /*모서리 둥글게*/
+        padding: 12px 15px;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 14px;
+      }
+      
+      /* 버튼 스타일 */
+      .member input[type="submit"] {
+        background-color: #6a24fe; 
+        border: none;
+        border-radius: 10px;
+        color: #fff;
         padding: 15px;
         width: 100%;
-        margin-bottom: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 15px;
       }
       
-      /* 버튼과 제출 버튼 스타일 */
-      .member input[type="button"],
-      .member input[type="submit"] {
-        background-color: #6a24fe; /* 보라색 배경 */
-        border-radius: 10px;
-        color: #fff; /* 흰색 텍스트 */
-      }
-      
-      /* 라디오 버튼 색상 설정 */
-      #radio {
-        accent-color: #6a24fe; /* 보라색으로 강조 */
-      }
-      
-      /* 체크박스 색상 설정 */
-      #check {
-        accent-color: #6a24fe; /* 보라색으로 강조 */
+      /* 체크박스 스타일 */
+      .check-container {
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
       }
       
       /* 성별 선택 영역 스타일 */
       .field.gender div {
-        border: 1px solid #dadada;
-        padding: 15px 5px;
+        border: 2px solid #6a24fe; 
+        border-radius: 8px; /*모서리 둥글게*/
+        padding: 10px;
+        display: flex;
+        gap: 20px;
       }
       
-      /* 아이디 체크 결과 메시지 스타일 */
+      input[type="radio"],
+      input[type="checkbox"] {
+        accent-color: #6a24fe; 
+      }
+      
+      .id-container {
+        display: flex;
+        align-items: center;
+      }
+      
       .id-check-result {
         font-size: 12px;
         margin-top: 5px;
       }
-      
-      /* 아이디 입력과 체크박스를 감싸는 컨테이너 */
-      .id-container {
-        display: flex; /* 플렉스 레이아웃 사용 */
-        align-items: center; /* 세로 중앙 정렬 */
-      }
-      
-      /* 아이디 입력 필드 스타일 */
-      .id-container input[type="text"] {
-        flex: 1; /* 남은 공간 모두 차지 */
-      }
-      
-      /* 체크박스 컨테이너 스타일 */
-      .check-container {
-        margin-left: 10px;
-        white-space: nowrap; /* 텍스트 줄바꿈 방지 */
-      }
     </style>
   </head>
   <body>
-    <!-- 회원가입 폼 시작 -->
     <form id="signupForm">
       <div class="member">
-        <!-- 아이디 입력 필드 -->
         <div class="field">
           <b>아이디</b>
           <div class="id-container">
             <input type="text" id="userid" placeholder="아이디를 입력하세요" />
             <div class="check-container">
-              <!-- 아이디 유효성 확인용 체크박스 -->
               <input type="checkbox" id="check" onclick="checkIdValidity(this)" /><label for="check">확인</label>
             </div>
           </div>
-          <!-- 아이디 유효성 검사 결과 표시 영역 -->
           <div id="id-check-result" class="id-check-result"></div>
         </div>
-        
-        <!-- 비밀번호 입력 필드 -->
         <div class="field">
           <b>비밀번호</b>
           <input
@@ -126,8 +113,6 @@
             placeholder="비밀번호를 입력하세요"
           />
         </div>
-        
-        <!-- 비밀번호 확인 필드 -->
         <div class="field">
           <b>비밀번호 확인</b>
           <input
@@ -137,14 +122,10 @@
             placeholder="비밀번호를 한 번 더 입력하세요"
           />
         </div>
-        
-        <!-- 이름 입력 필드 -->
         <div class="field">
           <b>이름</b>
           <input type="text" id="username" placeholder="이름을 입력하세요" />
         </div>
-        
-        <!-- 성별 선택 라디오 버튼 -->
         <div class="field gender">
           <b>성별</b>
           <div>
@@ -152,77 +133,65 @@
             <label><input type="radio" name="gender" />여자</label>
           </div>
         </div>
-        
-        <!-- 가입 제출 버튼 -->
         <input type="submit" value="가입" id="submitBtn" />
       </div>
     </form>
 
     <script>
-      // 폼 제출 이벤트 처리
       document
         .getElementById("signupForm")
         .addEventListener("submit", function (event) {
-          event.preventDefault(); // 폼 제출 기본 동작 방지 (유효성 검사 후 제출)
+          event.preventDefault();
           const userid = document.getElementById("userid").value;
           const pass1 = document.getElementById("pass1").value;
           const pass2 = document.getElementById("pass2").value;
           const username = document.getElementById("username").value;
-
-          // 각 필드별 유효성 검사 수행
           if (!checkUserId(userid)) return;
           if (!checkPassword(pass1, pass2)) return;
           if (!checkUsername(username)) return;
-
-          // 유효성 검사 통과 시 성공 메시지 표시
           alert("회원가입 성공!");
           
         });
 
-      // 체크박스 클릭 시 아이디 유효성 검사 수행 함수
       function checkIdValidity(checkbox) {
         const userid = document.getElementById("userid").value;
         const idok = document.getElementById("id-check-result");
 
         if (checkbox.checked) {
-          // 체크박스가 체크되면 아이디 유효성 검사 수행
-          const isValid = validateUserIdForCheckbox(userid);
+          const isValid = UserIdCheckbox(userid);
           idok.textContent = isValid
             ? "사용 가능한 아이디입니다."
             : "불가능한 아이디입니다.";
-            idok.style.color = isValid ? "green" : "red"; // 결과에 따라 색상 변경
+            idok.style.color = isValid ? "green" : "red"; 
         } else {
-            idok.textContent = ""; // 체크 해제 시 메시지 제거
+            idok.textContent = ""; 
         }
       }
 
-      // 아이디 유효성 검사 함수 (폼 제출 시 사용)
       function checkUserId(userid) {
-        const special = /[!@#$%^&*(),.?":{}|<>]/; // 특수문자 정규식
+        const special = /[!@#$%^&*(),.?":{}|<>]/; 
         if (userid === "") {
           alert("사용할 아이디를 입력해주세요!");
           return false;
         }
         if (userid.length < 8) {
-          // 8자리 이상 조건 검사
           alert("아이디는 8자리 이상이어야 합니다.");
           return false;
         }
         if (!special.test(userid)) {
-          // 특수문자 포함 여부 검사
           alert("아이디에 특수문자가 포함되어야 합니다.");
           return false;
         }
         return true;
       }
 
-      // 체크박스용 아이디 유효성 검사 함수
-      function validateUserIdForCheckbox(userid) {
+      // 사용 가능한 아이디인지 확인하는 것
+      function UserIdCheckbox(userid) {
         const special = /[!@#$%^&*(),.?":{}|<>]/;
-        return userid.length >= 8 && special.test(userid); // 8자리 이상 + 특수문자 포함 검사
+        return userid.length >= 8 && special.test(userid);
       }
 
-      // 비밀번호 유효성 검사 함수
+      // 비밀번호 입력 여부와 일치 여부
       function checkPassword(pass1, pass2) {
         if (pass1 === "") {
           alert("사용할 비밀번호를 입력하세요");
@@ -233,14 +202,12 @@
           return false;
         }
         if (pass1 !== pass2) {
-          // 비밀번호 일치 여부 검사
           alert("비밀번호가 일치하지 않습니다.");
           return false;
         }
         return true;
       }
 
-      // 이름 입력 여부 검사 함수
       function checkUsername(username) {
         if (username === "") {
           alert("이름을 입력하세요");
