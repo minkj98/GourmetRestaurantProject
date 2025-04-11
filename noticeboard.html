@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+</head>
+<style>
+
+    .searchContainer{
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .calendarContainer{
+        display: inline-block;
+      }
+
+      .calenderStartPopUp{
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        padding: 10px;
+      }
+
+      .calenderEndPopUp{
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        padding: 10px;
+      }
+
+
+    
+
+   
+
+    .combo-radioContainer{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    
+    .input-text{
+        font-size: 1rem;
+        font-family: sans-serif;
+        font-weight: 400;
+        text-align: center;
+        padding: 3px;
+        border-radius: 10px;
+        background-color: #6a24fe;
+        position: relative;
+        margin-top: 3px;
+        color: white;
+    }
+
+    .input{
+        width:295px;
+        height:30px;
+        border-radius: 10px;
+        margin-top: 10px;
+        border: 2px solid #6a24fe;
+      }
+
+      .comboContainer select{
+        border-radius: 10px;
+        padding: 5px;
+        border: 2px solid #6a24fe;
+      }
+
+      .do{
+        font-size: 1rem;
+        font-family: sans-serif;
+        font-weight: 400;
+        text-align: center;
+        padding: 3px;
+        border-radius: 10px;
+        background-color: #6a24fe;
+        position: relative;
+        margin-top: 3px;
+        color: white;
+
+      }
+
+      .si{
+        font-size: 1rem;
+        font-family: sans-serif;
+        font-weight: 400;
+        text-align: center;
+        padding: 3px;
+        border-radius: 10px;
+        background-color: #6a24fe;
+        position: relative;
+        margin-top: 3px;
+        color: white;
+
+      }
+
+     
+     
+
+      
+
+      .radioContainer  {
+        display: flex;
+        width: 400px;
+        
+        border-radius: 8px; /*모서리 둥글게*/
+        padding: 10px;
+        display: flex;
+        gap: 20px;
+      }
+
+      .radioContainer input[type = "radio"]{
+        accent-color: #6a24fe; 
+        margin-right: 5px;
+
+      }
+
+      input[type = "date"]::before{
+        content: attr(date-placeholder);
+        width: 100%;
+      }
+
+      input[type = "date"]:focus::before,
+      input[type = "date"]:valid::before{
+         display: none;
+      }
+
+      
+
+
+
+
+
+</style>
+<body>
+    <div class = "combo-radioContainer">
+        <div class = "comboContainer">
+            <span class = "do">도선택</span>
+            <select id = "province" name = "도선택" onchange="categoryChange(this)">
+                <option value = "do-select">도를 선택하세요</option>
+                <option value = "gyeonggi-do">경기도</option>
+                <option value = "Chungcheongbuk-do">충청북도</option> 
+            </select>        
+            <span class = "si">시선택</span>
+            <select id = "city" name = "시선택">
+                <option>시를 선택하세요</option>
+            </select>
+        </div>
+            <div class = "radioContainer">
+                <label>
+                    <input type = "radio" name = "accommodations" value = "searchall"/>
+                    <span>전체검색</span>
+                </label>
+                &emsp;&emsp;
+                <label>
+                    <input type = "radio" name = "accommodations" value = "hotel"/>
+                    <span>호텔</span>
+                </label>
+                <label>
+                    <input type = "radio" name = "accommodations" value = "guesthouse"/>
+                    <span>펜션</span>
+                </label>
+                <label>
+                    <input type = "radio" name = "accommodations" value = "campground"/>
+                    <span>캠핑장</span>
+                </label>
+            </div>    
+            
+        </div>
+    </div>
+
+    <div class = "searchContainer">
+    <form action="https://www.google.com/search" method="GET">
+        <span class = "input-text">검색어</span>
+        <input name = "query" type = "text" class="input" placeholder="검색어를 입력하세요">
+    </div>
+    </form>
+    <div class = "calendarContainer">
+        <div class = "calenderStartPopUp">
+            <label>
+                <input type = "date" 
+                id = "startDate" 
+                name = "date" 
+                date-placeholder = "등록 날짜 시작" 
+                required aria-required = "true" 
+                max = "9999-12-31"
+                onchange = "dateTypechk(this)"/>
+            </label>
+        </div>
+        <div class = "calenderEndPopUp">
+            <label>
+                <input type = "date" 
+                id = "endDate" 
+                name = "date" 
+                date-placeholder = "등록 날짜 종료" 
+                required aria-required = "true"  
+                max = "9999-12-31"
+                onchange = "dateTypechk(this)"
+                />
+            </label>
+        </div>
+        <div class = "searchBtn">
+            <input type = "button" 
+            value = "조회" 
+            id = "btnSearch" 
+            class = "btn" 
+            onclick = "cchk()">
+        </div>
+
+    </div>
+  
+    
+    
+</body>
+</html>
+<script>
+    function categoryChange(e){
+        var select_gyeonggi = ["시를 선택하세요", "수원시", "오산시", "화성시"];
+        var select_Chungcheongbuk = ["시를 선택하세요", "제천시", "충주시", "청주시"];
+        var target = document.getElementById("city");
+
+        if(e.value == "gyeonggi-do")var d = select_gyeonggi;
+        else if(e.value == "Chungcheongbuk-do")var d = select_Chungcheongbuk;
+        
+        target.options.length = 0;
+
+        for(x in d){
+            var opt = document.createElement("option");
+            opt.value = d[x];
+            opt.innerHTML = d[x];
+            target.appendChild(opt);
+
+        }
+    }    
+
+    function cchk(){
+        // alert("조회버튼")
+        a = document.getElementById('start-date-text').value
+        if(a == ''){
+            alert("시작날짜 입력은 필수입니다.");
+        }
+
+
+
+
+    }
+
+    function dateTypechk(ee){
+        e=ee.value;
+        if(e ==''){
+            alert('날짜를 입력하세요');
+            return;
+        }
+        var regex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/);
+        var a = regex.test(e);
+        if(!a){
+            alert('날짜 양식이 잘못되었습니다');
+            ee.value='';
+            return;
+        }
+    }
+
+    
+
+
+
+</script>
